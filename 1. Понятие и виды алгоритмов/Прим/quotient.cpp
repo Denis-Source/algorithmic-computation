@@ -3,9 +3,7 @@ using namespace std;
 
 int main()
 {    
-    int divisor, dividend, quotient;
-
-    cin >> dividend;
+    int divisor, dividend, quotient;    cin >> dividend;
     cin >> divisor;
 
     if (divisor == 0) {
@@ -14,6 +12,5 @@ int main()
         quotient = dividend / divisor;
         cout << "Quotient = " << quotient << endl;
     }
-
     return 0;
 }
