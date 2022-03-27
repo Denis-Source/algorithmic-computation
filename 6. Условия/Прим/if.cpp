@@ -7,5 +7,6 @@ int main() {
     if (a > b) {
         printf("%d\n", a);
     }
+    
     system("pause");
 }
