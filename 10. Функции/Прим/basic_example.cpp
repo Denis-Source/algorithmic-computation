@@ -1,12 +1,12 @@
 #include <iostream>
 
 
-void print_hello(int n) {
+void printHello(int n) {
     for (int i = 0; i < n; i++) {
         printf("Hello\n");
         }
 }
 
 int main() {
-    print_hello(25);
+    printHello(25);
 }

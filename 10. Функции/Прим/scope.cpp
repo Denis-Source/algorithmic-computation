@@ -2,7 +2,7 @@
 
 int scope_test_outside_function = 1337;
 
-void test_scope() {
+void testScope() {
     int scope_test_inside_function = 42;
 
     // Функция "Видит" (имеет доступ к двум переменным)
@@ -11,7 +11,7 @@ void test_scope() {
 }
 
 int main() {
-    test_scope();
+    testScope();
 
     // Функция "Видит" только к переменной scope_test_outside_function
     printf("%d\n", scope_test_outside_function);

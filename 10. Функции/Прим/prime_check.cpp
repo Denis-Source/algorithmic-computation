@@ -13,7 +13,7 @@ using namespace std;
 
     Возвращает да или нет (true / false)
 */
-bool is_prime(int number) {
+bool isPrime(int number) {
     // Не самым эффективным, но простым способом является
     // проверка каждого числа, которое больше 1, но меньше
     // самого этого числа
@@ -39,21 +39,21 @@ bool is_prime(int number) {
 
 int main() {
     // Присваиваем проверочные значения в массиве
-	int potential_primes[]  = {3, 5, 345, 39, 17, 90};
+	int potentialPrimes[]  = {3, 5, 345, 39, 17, 90};
 
     // Делаем цикл, для проверки каждого элемента массива
-    for (int i = 0; i < size(potential_prime); i++) {
+    for (int i = 0; i < size(potentialPrimes); i++) {
         // Делаем условие, внутри которого вызываем функцию проверки
         // Если функция возвращает да (true) – Условие выполняется
         // и наоборот
         // Проверка осуществляется для каждого элемента массива
         // Адресация производиться с помощью счетчика i
-        if (is_prime(potential_prime[i])) {
+        if (isPrime(potentialPrimes[i])) {
             // Если условие выполняется, пишем, что число простое
-            printf("Number %d is prime\n", potential_prime[i]);
+            printf("Number %d is prime\n", potentialPrimes[i]);
         } else {
             // Иначе – нет
-            printf("Number %d is not prime\n", potential_prime[i]);
+            printf("Number %d is not prime\n", potentialPrimes[i]);
         }
     }
 }
