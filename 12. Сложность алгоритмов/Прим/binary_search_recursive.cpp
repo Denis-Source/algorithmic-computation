@@ -1,42 +1,105 @@
+/*
+    Скрипт, демонстрирующий поиск элемента в массиве
+    с помощью простого перебора всех элементов
+*/
+
+// Импорт библиотек
+// Для printf()
 #include <stdio.h>
+// Для rand()
 #include <cstdlib>
+// Для sort()
 #include <algorithm>
 
 using namespace std;
 
+// глобальная переменная счетчика
+int counter;
+
+
+/*
+    Функция наполнения массива псевдослучайными значениями
+    После наполнения происходит его сортировка
+
+    Для работы требует массив, а также значение его длинны
+    Функция ничего не возвращает, а всего лишь работает
+    с указанным массивом
+*/
 void genSortedValues(int array[], int len) {
+    // Для генерации псевдослучайных чисел
+    // необходимо значения зерна
+    // используется для инициализации генератора случ. чисел
     int seed = 0;
+
+    // Установка значения в генераторе
     srand(seed);
+
+    // Генерация случ. числа с последующим его  присваиванием  
+    // на каждый элемент массива
     for (int i = 0; i < len; i++) {
         array[i] = rand();
     }
+    // Сортировка массива осущ. встроенной функцией модуля algorithm
+    // функция sort() в худшем случае имеет сложность N log N
     sort(array, array + len);
 }
 
-int findValueBinaryR(int array[], int smallest, int highest, int number) {
-    if (highest >= smallest) {
-        int middle = smallest + (highest - smallest) / 2;
- 
-        if (array[middle] == number)
-            return middle;
-            
-        if (array[middle] > number)
-            return findValueBinaryR(array, smallest, middle - 1, number);
+int findValueBinaryR(int array[], int first, int last, int number) {
+    if (last >= first) {
+        // Инкремент счетчика производится при каждой операции
+        counter += 3;
 
-        return findValueBinaryR(array, middle + 1, highest, number);
+        // Находим индекс условной середины
+        // Нужно учитывать, что переменная – целочисленный тип
+        // И значение округлится в сторону меньшего числа (floor)
+
+        // Индекс середины вычисляется используя так называемое
+        // "среднее" значение
+        int middle = first + (last - first) / 2;
+ 
+        // Если нужный элемент находится посередине
+        // Нам "повезло", запоминаем индекс, выходим из цикла
+        if (array[middle] == number){
+            counter++;
+            return middle;
+        }   
+        // Если элемент, что находится посередине меньше, чем искомое,
+        // сдвигаем индекс наименьшего числа на середину, вызываем функцию поиска
+        // с новыми полученными значениями
+        // нужно понимать, что сдвиг идет на значение правее на один от середины
+        // саму середину мы уже проверили
+        if (array[middle] > number){
+            counter++;
+            return findValueBinaryR(array, first, middle - 1, number);
+        }
+        // Если элемент, что находится посередине больше,
+        // сдвигаем индекс наименьшего числа на середину, вызываем функцию поиска
+        // с новыми полученными значениями
+        // нужно понимать, что сдвиг идет на значение левее на один от середины
+        // саму середину мы уже проверили 
+        else {
+            counter++;
+            return findValueBinaryR(array, middle + 1, last, number);
+        }
     }
 }
 
 
 int main() {
+    // Определение длины массива
     const int arrLen = 100000;
+    // Инициализация массива и его наполнение с помощью genSortedValues()
     int arr[arrLen];
     genSortedValues(arr, arrLen);
 
-
+    // Определение искомого значения
     int numberToFind = 9999;
-    int value = findValueBinaryR(arr, arr[0], arr[arrLen - 1], numberToFind);
+
+    // Поиск значения с помощью функции findValueBinary()
+    int value = findValueBinaryR(arr, 0, arrLen - 1, numberToFind);
+
+    // Вывод на экран значения счетчика и возврат индекса
+    printf("It took %d operations\n", counter);
+    // Вывод на экран результата
     printf("Found number %d, at %d position\n", numberToFind, value);
-
 }
-
