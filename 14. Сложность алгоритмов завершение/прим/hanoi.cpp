@@ -25,7 +25,7 @@ void towerOfHanoi(int n, char from_rod, char to_rod, char aux_rod) {
 
 int main()
 {
-    int n = 8;
+    int n = 16;
     towerOfHanoi(n, 'A', 'C', 'B');
     printf("Total opertations: %d", counter);
 }

@@ -27,7 +27,7 @@ void powerSet(string str, int index = -1,
 
 int main()
 {
-    string str = "012";
+    string str = "1234";
     powerSet(str);
     cout << "Total operations:" << counter << "\n";
 
