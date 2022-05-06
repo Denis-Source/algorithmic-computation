@@ -35,7 +35,7 @@ void printArray(int array[], int arrayLen) {
   
 int main() { 
     int arrayLen = 8;
-    int array[arrayLen] = {5, 6, 4, 34, 7, 1, 12, 32};
+    int array[arrayLen] = {7, 6, 5, 3, 4, 2, 1, 0};
 
     printf("Initial array:\n");
     printArray(array, arrayLen); 

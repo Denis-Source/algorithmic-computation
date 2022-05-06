@@ -71,7 +71,7 @@ void printArray(int array[], int left) {
   
 int main() { 
    int left = 8;
-   int array[left] = {5, 6, 4, 34, 7, 1, 12, 32};
+   int array[left] = {7, 6, 5, 4, 3, 1, 2, 0};
 
    printf("Initial array:\n");
    printArray(array, left); 
