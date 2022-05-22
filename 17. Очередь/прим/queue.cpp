@@ -13,9 +13,15 @@ int main() {
     testQueue.push(8);
     testQueue.push(16);
 
-    printf("First elem: %d\n", testQueue.front());
+    printf(
+        "First elem: %d\n", 
+        testQueue.front());
+
     testQueue.pop();
     printf("Poped!\n");
-    printf("First elem: %d\n", testQueue.front());
+
+    printf(
+        "First elem: %d\n", 
+        testQueue.front());
  }
 
